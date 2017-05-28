@@ -1,5 +1,11 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1>温泉検索</h1>
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>スパナビで<br>
+      温泉を探そう！</h1>
+     <%# ここに検索用セレクトボックスを設置 %>
+    </div>
   </div>
-</div>
+<% end %>
