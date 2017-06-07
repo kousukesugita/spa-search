@@ -57,3 +57,7 @@ gem 'pry-rails'
 gem 'pry-byebug'
 
 gem 'kaminari'
+
+gem 'faraday'
+
+gem 'dotenv-rails'

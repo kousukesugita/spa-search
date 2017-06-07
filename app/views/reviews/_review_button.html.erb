@@ -1,0 +1,11 @@
+<% if current_user.review?(spa) %>
+  <%= form_tag(review_path(spa.id), method: :delete) do %>
+    <%= hidden_field_tag :spa_id, spa.id %>
+    <%= submit_tag 'レビュー済', class: 'btn btn-warning' %>
+  <% end %>
+<% else %>
+  <%= form_tag(reviews_path) do %>
+    <%= hidden_field_tag :spa_code, spa.code %>
+    <%= submit_tag 'レビューする', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

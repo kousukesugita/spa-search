@@ -37,6 +37,10 @@ end
 
 private
 
-def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-end
+  def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def set_prefectures
+      @prefectures = Prefecture.all.pluck(:name,:id)
+  end

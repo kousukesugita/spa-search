@@ -1,11 +1,14 @@
-<% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
-<% else %>
-  <div class="center jumbotron">
-    <div class="text-center">
-      <h1>スパナビで<br>
-      温泉を探そう！</h1>
-     <%# ここに検索用セレクトボックスを設置 %>
-    </div>
+<div class="center jumbotron">
+  <div class="text-center">
+    <h1>スパナビで<br>温泉を探そう！</h1>
+    <%= form_tag search_path, method: :get do %>
+      <%= collection_select(:prefs, :id, Prefecture.all, :id, :name) %>
+      <%= submit_tag '温泉を検索', class: 'btn btn-success btn-md' %>
+    <% end %>
   </div>
-<% end %>
+  <div class="text-center">
+    <%= form_tag japanmap_path, method: :get do %>
+      <%= submit_tag '地図から都道府県を選ぶ', class: 'btn btn-primary btn-lg' %>
+    <% end %>
+  </div>
+</div>
