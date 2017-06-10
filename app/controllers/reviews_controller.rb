@@ -1,18 +1,27 @@
 class ReviewsController < ApplicationController
+
   def create
-    @spa = Spa.find_or_initialize_by(id: params[:spa_id])
+
+    # パラメータ詳細    
+    # {
+    #   "onsen_code"=>"0001",
+    #   "score"=>"5"
+    # }
+    #
+
+    spa = Spa.where(onsen_code: params['onsen_code']).first
     
-    unless @spa.persisted?
-      results =  Spa.search(spa)
-      
-      @spa = Spa.new(read(results.first))
-      @spa.save
-    end
-    
-    current_user.review(@spa) 
+    review_params = {
+      user_id: current_user.id,
+      spa_id: spa.id,
+      score: params['score'],
+    }
+
+    Review.new(review_params).save
+
     flash[:success] = '温泉をレビューしました。'
-    
-    redirect_back(fallback_location: root_path)
+
+    redirect_to root_path
   end
 
   def destroy

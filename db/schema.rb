@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603065521) do
+ActiveRecord::Schema.define(version: 20170609113223) do
 
   create_table "checks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -41,16 +41,14 @@ ActiveRecord::Schema.define(version: 20170603065521) do
   end
 
   create_table "spas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "OnsenID"
-    t.string   "OnsenName"
-    t.string   "OnsenNameKana"
-    t.string   "OnsenAddres"
-    t.string   "Prefecture"
-    t.string   "NatureOfOnsen"
-    t.string   "OnsenAreaURL"
-    t.string   "OnsenAreaCaption"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "onsen_code"
+    t.string   "onsen_name"
+    t.string   "onsen_name_kana"
+    t.string   "onsen_address"
+    t.string   "nature_of_onsen"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.text     "onsen_area_caption", limit: 65535
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

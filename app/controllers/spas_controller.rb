@@ -7,4 +7,9 @@ class SpasController < ApplicationController
     @spas = []
     
   end
+
+
+  private
+  
+
 end

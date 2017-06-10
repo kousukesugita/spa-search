@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :reviews
-  has_many :spas, through: :reviews
+  has_many :review_spas, through: :reviews, source: :spas
   has_many :checks
   has_many :spas, through: :checks
   
@@ -36,4 +36,15 @@ class User < ApplicationRecord
   def check?(spa)
     self.check_spas.include?(spa)
   end
+
+  def reviewed?(onsen_code)
+    spa = Spa.where(onsen_code: onsen_code).first
+    Review.where(user_id: self.id, spa_id: spa.id).present?
+  end
+
+  def review_score(onsen_code)
+    spa = Spa.where(onsen_code: onsen_code).first
+    Review.where(user_id: self.id, spa_id: spa.id).first.score
+  end
+
 end

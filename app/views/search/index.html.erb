@@ -14,12 +14,15 @@
       <td class="text-center"><%= onsen['OnsenNameKana'] %></td>
       <td class="text-center"><%= onsen['OnsenAddress'] %></td>
       <td class="text-center"><%= onsen['NatureOfOnsen'] %></td>
-      <td class="text-center"><%#
-        <div class="buttons text-center">
-          <%= render 'reviews/review_button', spa: spa %>
-        </div>
+      <td class="text-center">
+        <% if current_user.reviewed?(onsen['OnsenID']) %>
+          <%= current_user.review_score(onsen['OnsenID']) %>
+        <% else %>
+          <div class="star" data-onsen-code="<%= onsen['OnsenID'] %>"></div>
+        <% end %>
       </td>
-        
     </tr>
   <% end %>
 </table>
+
+<%= javascript_include_tag 'raty' %>

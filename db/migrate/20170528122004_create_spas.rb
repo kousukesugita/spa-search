@@ -1,14 +1,11 @@
 class CreateSpas < ActiveRecord::Migration[5.0]
   def change
     create_table :spas do |t|
-      t.integer :OnsenID
-      t.string :OnsenName
-      t.string :OnsenNameKana
-      t.string :OnsenAddres
-      t.string :Prefecture
-      t.string :NatureOfOnsen
-      t.string :OnsenAreaURL
-      t.string :OnsenAreaCaption
+      t.string :onsen_code
+      t.string :onsen_name
+      t.string :onsen_name_kana
+      t.string :onsen_address
+      t.string :nature_of_onsen
 
       t.timestamps
     end

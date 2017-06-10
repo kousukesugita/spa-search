@@ -13,5 +13,6 @@
     <ul class="nav nav-tabs nav-justified">
       <li class="<%= 'active' if current_page?(reviews_user_path(@user)) %>"><%= link_to reviews_user_path(@user) do %>評価した温泉一覧 <span class="badge"><%= @count_reviews %></span><% end %></li>
     </ul>
+    <%= render 'reviews/reviews', review_spas: @review_spas, users: @users %>
   </div>
 </div>

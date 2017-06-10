@@ -1,18 +1,26 @@
 <div class="row">
-  <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-3">
-    <div class="item">
+  <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-md-offset-2">
+    <div class="spa">
       <div class="panel panel-default">
-        <div class="panel-heading text-center">
-          <img src="<%= @spa.name %>" alt="">
-        </div>
         <div class="panel-body">
-          <p class="item-title"><%= @spa.name %></p>
-          <div class="buttons text-center">
-            <% if logged_in? %>
-              <%= render 'reviews/review_button', spa: @spa %>
+          <h1 class="text-center"><%= @spa.onsen_name %>（ <%= @spa.onsen_name_kana %> ）</h1>
+
+          <!-- スコアリング機能をログインユーザーに提供する -->
+          <% if logged_in? %>
+            <% if current_user.reviewed?(@spa.onsen_code) %>
+              <%= current_user.review_score(@spa.onsen_code) %>
+            <% else %>
+              <div class="star" data-onsen-code="<%= @spa.onsen_code %>"></div>
             <% end %>
-          </div>
+          <% end %>
+
+          <h2>所在地：<%= @spa.onsen_address %></h2>
+          <h2>泉質：<%= @spa.nature_of_onsen %></h2>
+          <!-- @spa.nature_of_onsen データ取得できず -->
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<%= javascript_include_tag 'raty' %>

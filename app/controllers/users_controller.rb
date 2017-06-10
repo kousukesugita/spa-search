@@ -33,9 +33,14 @@ class UsersController < ApplicationController
 
   def destroy
   end
-end
 
-private
+  def reviews
+    @user = User.find(params[:id])
+    @review_spas = @user.review_spas.page(params[:page])
+    counts(@user)
+  end
+
+  private
 
   def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
@@ -44,3 +49,4 @@ private
   def set_prefectures
       @prefectures = Prefecture.all.pluck(:name,:id)
   end
+end
