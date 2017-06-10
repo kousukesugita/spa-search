@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: spa-search_production
   username: spa-search
   password: <%= ENV['SPA-SEARCH_DATABASE_PASSWORD'] %>

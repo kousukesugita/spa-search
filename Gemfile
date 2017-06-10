@@ -61,3 +61,7 @@ gem 'kaminari'
 gem 'faraday'
 
 gem 'dotenv-rails'
+
+group :production do
+  gem 'pg'
+end
