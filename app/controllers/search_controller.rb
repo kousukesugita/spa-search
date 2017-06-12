@@ -16,6 +16,7 @@ class SearchController < ApplicationController
     params = {
       key: ENV['JALAN_API_KEY'], # APIキー
       pref: @pref_jalanprefcode, # 都道府県コード : 北海道
+      xml_ptn: 1,                 # 出力項目の範囲 0:エリア内の温泉全て（初期値）1:エリア内の温泉地全て
       count: 12,                  # 表示件数 : 3件
     }
 
